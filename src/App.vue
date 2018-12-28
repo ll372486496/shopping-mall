@@ -35,10 +35,10 @@ export default {
   },
   methods: {
     changeTabbar(active) {
-                console.log(active)
+               /*  console.log(active) */
                 switch(active){
                     case 0:
-                        this.$router.push({name:'ShoppingMall'})
+                        this.$router.push({name:'Home'})
                         break;
                     case 1:
                         this.$router.push({name:'CategoryList'})
@@ -47,6 +47,7 @@ export default {
                         this.$router.push({name:'Cart'})
                         break;
                     case 3:
+                        this.$router.push({name:'Profile'})
                         break;
                 }
             }
