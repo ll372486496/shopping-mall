@@ -6,7 +6,10 @@ import store from './store'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
-
+/* 引入axios库 */
+import axios from "axios"
+/* 将axios注册到Vue */
+Vue.prototype.axios=axios
 Vue.config.productionTip = false
 
 new Vue({
