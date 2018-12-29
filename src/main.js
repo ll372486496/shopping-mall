@@ -11,6 +11,10 @@ import axios from "axios"
 /* 将axios注册到Vue */
 Vue.prototype.axios=axios
 Vue.config.productionTip = false
+/* 引入vue-awesome-swiper */
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,

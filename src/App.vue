@@ -17,6 +17,7 @@
       </van-row>
     </div>
     <router-view/>
+    <!-- tabbar -->
     <van-tabbar v-model="active" @change="changeTabbar(active)">
             <van-tabbar-item icon="shop">首页</van-tabbar-item>
             <van-tabbar-item icon="records">列表页</van-tabbar-item>
