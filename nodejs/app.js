@@ -23,7 +23,7 @@ app.get("/bannerlist",(req,res)=>{
     {id:2,img_url:"http://127.0.0.1:3000/banner/banner2.jpg"},
     {id:3,img_url:"http://127.0.0.1:3000/banner/banner3.jpg"},
     {id:4,img_url:"http://127.0.0.1:3000/banner/banner4.jpg"},
-    {id:4,img_url:"http://127.0.0.1:3000/banner/banner5.jpg"}
+    {id:5,img_url:"http://127.0.0.1:3000/banner/banner5.jpg"}
 
   ];
   res.send(obj);
