@@ -35,7 +35,10 @@
     }
   }
 </script>
-
+  
 <style scoped>
-
+  .swipe-banner{
+    clear: both;
+    width: 20rem;
+  }
 </style>
