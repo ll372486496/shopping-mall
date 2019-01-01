@@ -124,3 +124,82 @@ app.get('/recommend',(req,res)=>{
   ];
   res.send(recommend);
 });
+app.get('/floors',(req,res)=>{
+  var floors={
+    floor1:{
+      title:"营养奶品",
+      data:[
+        {
+          pid: "1087",
+          image: "http://127.0.0.1:3000/floors/f1_1.jpg"
+        },
+        {
+          pid: "1088",
+          image: "http://127.0.0.1:3000/floors/f1_2.jpg"
+        },
+        
+        {
+          pid: "1089",
+          image: "http://127.0.0.1:3000/floors/f1_3.jpg"
+        },
+        {
+          pid: "1090",
+          image: "http://127.0.0.1:3000/floors/f1_4.jpg"
+        },
+        {
+          pid: "1091",
+          image: "http://127.0.0.1:3000/floors/f1_5.jpg"
+        }
+      ]
+    } ,
+    floor2: {
+      title:"新鲜水果",
+      data:[
+        {
+          pid: "1051",
+          image: "http://127.0.0.1:3000/floors/f2_1.jpg"
+        },
+        {
+          pid: "1052",
+          image: "http://127.0.0.1:3000/floors/f2_2.jpg"
+        },
+        {
+          pid: "1053",
+          image: "http://127.0.0.1:3000/floors/f2_3.jpg"
+        },
+        {
+          pid: "1054",
+          image: "http://127.0.0.1:3000/floors/f2_4.jpg"
+        },
+        {
+          pid: "1055",
+          image: "http://127.0.0.1:3000/floors/f2_5.jpg"
+        }
+      ]},
+    floor3:{
+      title:"休闲食品",
+      data:[
+        {
+          pid: "1071",
+          image: "http://127.0.0.1:3000/floors/f3_1.jpg"
+        },
+        {
+          pid: "1072",
+          image: "http://127.0.0.1:3000/floors/f3_2.jpg"
+        },
+        {
+          pid: "1073",
+          image: "http://127.0.0.1:3000/floors/f3_3.jpg"
+        },
+        {
+          pid: "1074",
+          image: "http://127.0.0.1:3000/floors/f3_4.jpg"
+        },
+        {
+          pid: "1075",
+          image: "http://127.0.0.1:3000/floors/f3_5.jpg"
+        }
+      ]} 
+  };
+  res.send(floors);
+});
