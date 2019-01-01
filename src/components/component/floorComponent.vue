@@ -1,0 +1,97 @@
+<template>
+  <div>
+    <!-- 标题 -->
+    <div class="floor-title"> {{title}} </div>
+    <!--楼层组件 三部分-->
+    <div class="floor">
+      <div class="floor-anomaly">
+        <!-- 第一部分：上左最大图 -->
+        <div class="floor-one">
+          <img :src="floorData0.image" width="100%" />
+        </div>
+        <!-- 第二部分：上右两图 -->
+        <div>
+          <div class="floor-two">
+            <img :src="floorData1.image" width="100%" />
+          </div>
+          <div>
+            <img :src="floorData2.image" width="100%" />
+          </div>
+        </div>
+      </div>
+      <!-- 第三部分：下两图 -->
+      <div class="floor-rule">
+        <div v-for="(item ,index) in others" :key="index">
+          <img :src="item.image" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+    export default {
+        props:['floorData'],
+        data() {
+            return {
+                floorData0:{},
+                floorData1:{},
+                floorData2:{},
+                others:[],
+                title:''
+            }
+        },
+        created(){
+            //这里写得不到数据，应为数据是延迟返回的
+        },
+        watch:{
+            floorData:function(val){
+                
+                this.floorData0=this.floorData.data[0]
+                this.floorData1=this.floorData.data[1]
+                this.floorData2=this.floorData.data[2]
+                this.others=this.floorData.data.slice(3)
+                this.title=this.floorData.title;
+            }
+        }
+    }
+</script>
+<style scoped>
+  .floor-anomaly{
+      display: flex;
+      flex-direction:row;
+      background-color: #fff;
+      border-bottom:1px solid #ddd;
+  }
+  .floor-anomaly div{
+     width:10rem;
+     box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+  }
+  .floor-one{
+      border-right:1px solid #ddd;
+  }
+  .floor-two{
+      border-bottom:1px solid #ddd;
+  }
+  .floor-rule{
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap;
+      background-color: #fff;
+  }
+  .floor-rule div{
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width:10rem;
+      border-bottom:1px solid #ddd;
+  }
+  .floor-rule div:nth-child(odd){
+      border-right: 1px solid #ddd;
+  }
+  .floor-title{
+    text-align:center;
+    font-size:14px;
+    height: 1.8rem;
+    line-height: 1.8rem;
+  }
+</style>
