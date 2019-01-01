@@ -15,6 +15,10 @@ Vue.config.productionTip = false
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
+/* 引入money过滤器 */
+import{money} from './filter/money'
+Vue.filter('money',money);
+
 
 new Vue({
   router,
