@@ -31,7 +31,7 @@
             <div class="recommend-item">
                 <img :src="item.img_url" width="80%"  />
                 <div>{{item.pname}}</div>
-                <div> 原价￥<del>{{item.originPrice}}</del> 现价￥{{item.price}}</div>
+                <div> 原价￥<del>{{item.originPrice}}</del> 现价￥{{item.price|money}}</div>
             </div>
           </swiper-slide>
         </swiper>
@@ -42,17 +42,33 @@
     <floorComponent :floorData='f1'></floorComponent>
     <floorComponent :floorData='f2'></floorComponent>
     <floorComponent :floorData='f3'></floorComponent>
+    <!-- 热卖商品 -->
+    <div class="hot">
+      <div class="title">热卖商品</div>
+      <div class="hot-goods">
+        <!-- 商品组件 -->
+        <van-list>
+          <van-row gutter="20"><!-- gutter为列元素间距 -->
+            <van-col span="12" v-for="( item, index) in hotGoods" :key="index">
+              <goodsInfo :goods='item'></goodsInfo>
+            </van-col>
+          </van-row>
+        </van-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import floorComponent from '../components/component/floorComponent'
+import goodsInfo from '../components/component/goodsInfoComponent'
   export default {
     created(){
       this.getBannerList();
       this.getCategory();
       this.getRecommend();
       this.getFloors();
+      this.getHots();
     },
     data(){
       return {
@@ -62,6 +78,7 @@ import floorComponent from '../components/component/floorComponent'
         f1:null,
         f2:null,
         f3:null,
+        hotGoods:[],
         swiperOption:{
           slidesPerView:3
         },
@@ -101,9 +118,18 @@ import floorComponent from '../components/component/floorComponent'
           this.f3=res.data.floor3;
           /* console.log(this.floors); */
         });
+        
+      },
+      getHots(){
+        var url='http://127.0.0.1:3000/hots';
+        this.axios.get(url).then(res=>{
+          this.hotGoods=res.data;
+          console.log(this.hotGoods);
+        });
+
       }
     },
-    components:{floorComponent}
+    components:{floorComponent,goodsInfo}
   }
 </script>
   
@@ -150,5 +176,11 @@ import floorComponent from '../components/component/floorComponent'
       border-right: 1px solid #eee;
       font-size: 12px;
       text-align: center;
+  }
+  .hot{
+    text-align: center;
+    font-size: 14px;
+    height: 1.8rem;
+    line-height: 1.8rem
   }
 </style>
