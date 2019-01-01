@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <!-- 轮播图 -->
@@ -38,21 +39,29 @@
       </div>
     </div>
     <!-- 楼层 -->
+    <floorComponent :floorData='f1'></floorComponent>
+    <floorComponent :floorData='f2'></floorComponent>
+    <floorComponent :floorData='f3'></floorComponent>
   </div>
 </template>
 
 <script>
+import floorComponent from '../components/component/floorComponent'
   export default {
     created(){
       this.getBannerList();
       this.getCategory();
       this.getRecommend();
+      this.getFloors();
     },
     data(){
       return {
         bannerlist:[],
         category:null,
         recommend:[],
+        f1:null,
+        f2:null,
+        f3:null,
         swiperOption:{
           slidesPerView:3
         },
@@ -82,8 +91,19 @@
           /* console.log(res.data); */
           this.recommend=res.data;
         })
+      },
+      /* 获取楼层数据 */
+      getFloors(){
+        var url='http://127.0.0.1:3000/floors';
+        this.axios.get(url).then(res=>{
+          this.f1=res.data.floor1;
+          this.f2=res.data.floor2;
+          this.f3=res.data.floor3;
+          /* console.log(this.floors); */
+        });
       }
-    }
+    },
+    components:{floorComponent}
   }
 </script>
   
