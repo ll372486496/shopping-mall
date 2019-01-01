@@ -203,3 +203,148 @@ app.get('/floors',(req,res)=>{
   };
   res.send(floors);
 });
+app.get('/hots',(req,res)=>{
+  var obj=[
+    {
+      originPrice: 4.5,
+      image: "http://127.0.0.1:3000/hots/h1.jpg",
+      goodsId: "1091",
+      price: 3.9,
+      name: "美汁源果粒奶优水果饮料蜜桃450ml/瓶"
+    },
+    {
+      originPrice: 5.5,
+      image: "http://127.0.0.1:3000/hots/h2.jpg",
+      goodsId: "1092",
+      price: 4.5,
+      name: "阿华田麦芽乳饮品牛奶味250mL/盒"
+    },
+    {
+      originPrice: 5.5,
+      image: "http://127.0.0.1:3000/hots/h3.jpg",
+      goodsId: "1093",
+      price: 3.7,
+      name: "养元香浓六个核桃240ml/瓶"
+    },
+    {
+      originPrice: 7.5,
+      image: "http://127.0.0.1:3000/hots/h4.jpg",
+      goodsId: "1094",
+      price: 6.5,
+      name: "名屋木瓜牛乳340ml/瓶"
+    },
+    {
+      originPrice: 4.2,
+      image: "http://127.0.0.1:3000/hots/h5.jpg",
+      pid: "1095",
+      price: 3.9,
+      name: "美汁源果粒奶优草莓味450ml/瓶"
+    },
+    {
+      originPrice: 8.8,
+      image: "http://127.0.0.1:3000/hots/h6.jpg",
+      pid: "1096",
+      price: 7.5,
+      name: "名屋醇豆浆饮料485ml/瓶"
+    },
+    {
+      originPrice: 8.5,
+      image: "http://127.0.0.1:3000/hots/h7.jpg",
+      pid: "1097",
+      price: 6.3,
+      name: "李子园甜牛奶乳饮料450ml/瓶"
+    },
+    {
+      originPrice: 5,
+      image: "http://127.0.0.1:3000/hots/h8.jpg",
+      pid: "1098",
+      price: 4.5,
+      name: "李子园草莓风味乳饮料450ml/瓶"
+    },
+    {
+      originPrice: 9.9,
+      image: "http://127.0.0.1:3000/hots/h9.jpg",
+      pid: "1099",
+      price: 8.5,
+      name: "娃哈哈AD钙奶220ml*4/条"
+    },
+    {
+      originPrice: 7.6,
+      image: "http://127.0.0.1:3000/hots/h10.jpg",
+      pid: "1100",
+      price: 6,
+      name: "一榨鲜绿豆汁300ml/瓶"
+    },
+    {
+      originPrice: 5.5,
+      image: "http://127.0.0.1:3000/hots/h11.jpg",
+      pid: "1101",
+      price: 5,
+      name: "李子园朱古力风味乳饮料450ml/瓶"
+    },
+    {
+      originPrice: 8.5,
+      image: "http://127.0.0.1:3000/hots/h12.jpg",
+      pid: "1102",
+      price: 7.5,
+      name: "名屋黑豆浆饮料485ml/瓶"
+    },
+    {
+      originPrice:5,
+      image: "http://127.0.0.1:3000/hots/h13.jpg",
+      pid: "1103",
+      price: 4.5,
+      name: "阿华田麦芽乳饮品高钙味250mL/盒"
+    },
+    {
+      originPrice: 8,
+      image: "http://127.0.0.1:3000/hots/h14.jpg",
+      pid: "1104",
+      price: 6.5,
+      name: "名屋香蕉牛乳340ml/瓶"
+    },
+    {
+      originPrice: 4.5,
+      image: "http://127.0.0.1:3000/hots/h15.jpg",
+      pid: "1115",
+      price: 3.9,
+      name: "美汁源果粒奶优原味450ml/瓶"
+    },
+    {
+      originPrice: 17.4,
+      image: "http://127.0.0.1:3000/hots/h16.jpg",
+      pid: "1116",
+      price: 9,
+      name: "旺仔牛奶125ml*4/条"
+    },
+    {
+      originPrice: 88,
+      image: "http://127.0.0.1:3000/hots/h17.jpg",
+      pid: "1117",
+      price: 68,
+      name: "同福阿胶粥300g/箱"
+    },
+    {
+      originPrice: 4,
+      image: "http://127.0.0.1:3000/hots/h18.jpg",
+      pid: "1118",
+      price: 3.5,
+      name: "银鹭桂圆莲子八宝粥360g/瓶"
+    },
+    {
+      originPrice: 16.5,
+      image: "http://127.0.0.1:3000/hots/h19.jpg",
+      pid: "1119",
+      price: 14.5,
+      name: "椰树牌椰汁饮料1L/瓶"
+    },
+    {
+       originPrice: 7,
+      image: "http://127.0.0.1:3000/hots/h20.jpg",
+      pid: "1120",
+      price: 4.5,
+      name: "豆本豆原味豆奶250ml/盒"
+    }
+  ];
+  res.send(obj);
+});
