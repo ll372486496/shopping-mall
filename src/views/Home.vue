@@ -62,6 +62,7 @@
 <script>
 import floorComponent from '../components/component/floorComponent'
 import goodsInfo from '../components/component/goodsInfoComponent'
+import { Toast } from 'vant'
   export default {
     created(){
       this.getBannerList();
@@ -124,7 +125,7 @@ import goodsInfo from '../components/component/goodsInfoComponent'
         var url='http://127.0.0.1:3000/hots';
         this.axios.get(url).then(res=>{
           this.hotGoods=res.data;
-          console.log(this.hotGoods);
+          /* console.log(this.hotGoods); */
         });
 
       }
