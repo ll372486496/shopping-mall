@@ -59,7 +59,7 @@ export default {
 <style>
   .search-bar{
       height: 2.2rem;
-      background-color: #0066FF;
+      background-color: #1989fa;
       line-height:2.2rem;
   }
   .search-input{
@@ -69,7 +69,7 @@ export default {
       border-left:0px;
       border-right:0px;
       border-bottom: 1px solid 1px !important ;
-      background-color: #0066FF;
+      background-color: #1989fa;
       color:#fff;
   }
   .icon{
