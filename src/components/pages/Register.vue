@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant'
   export default {
     data(){
       return{
@@ -35,7 +36,11 @@
         var params =`username=${username}&password=${password}`
 
         this.axios.post(url,params).then(res=>{
-          console.log(res);
+          if(res.data.code==1){
+             Toast.success('注册成功')
+          }else{
+            Toast.fail('注册失败')
+          };
         })
       }
     },
