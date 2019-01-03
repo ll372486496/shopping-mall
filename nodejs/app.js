@@ -20,13 +20,13 @@ app.listen(3000);
 // __dirname 当前程序所属目录绝对路径 
 //app.js vue_app_server
 app.use(express.static(__dirname+"/public"))
-//5：装载路由
-app.use('/user',userRouter);
-app.use('/product',productRouter);
-//6:使用bodyParser模块
+//5:使用bodyParser模块
 app.use(bodyParser.urlencoded({
   extended:false
 }));
+//6：装载路由
+app.use('/user',userRouter);
+app.use('/product',productRouter);
 //功能一:首页轮播图
 app.get("/bannerlist",(req,res)=>{
   var obj = [
@@ -359,6 +359,3 @@ app.get('/hots',(req,res)=>{
   ];
   res.send(obj);
 });
-/* app.post('/reg',(req,res)=>{
-  console.log(req.body);
-}); */
