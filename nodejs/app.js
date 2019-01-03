@@ -1,6 +1,10 @@
 //1:加载模块 express pool
 const express = require("express");
 const pool = require("./pool");
+const bodyParser=require('body-parser'); // bodyParser模块
+const userRouter=require('./routes/user.js'); // 服务器用户路由
+const productRouter=require('./routes/product.js');// 服务器产品路由
+
 //2:创建express对象
 var app = express();
 //2.1:加载跨域访问组件
@@ -16,6 +20,13 @@ app.listen(3000);
 // __dirname 当前程序所属目录绝对路径 
 //app.js vue_app_server
 app.use(express.static(__dirname+"/public"))
+//5：装载路由
+app.use('/user',userRouter);
+app.use('/product',productRouter);
+//6:使用bodyParser模块
+app.use(bodyParser.urlencoded({
+  extended:false
+}));
 //功能一:首页轮播图
 app.get("/bannerlist",(req,res)=>{
   var obj = [
@@ -348,3 +359,6 @@ app.get('/hots',(req,res)=>{
   ];
   res.send(obj);
 });
+/* app.post('/reg',(req,res)=>{
+  console.log(req.body);
+}); */
