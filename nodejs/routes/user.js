@@ -23,6 +23,21 @@ router.post('/reg', function (req, res) {
    }
  })
  
+});
+router.post('/login',function(req,res){
+ var username = req.body.username;
+ var password = req.body.password;
+ var sql='SELECT * FROM mall_user WHERE uname=? AND upwd=?';
+ pool.query(sql,[username,password],(err,result)=>{
+  /* console.log(result); */
+  if(err)throw err;
+  if(result.length>0){
+   
+    res.send({code:1,msg:'登录成功'});
+  }else{
+    res.send({code:-2,msg:'账号或密码错误'});
+  }
+});
 })
 
 
