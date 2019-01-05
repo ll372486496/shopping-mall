@@ -57,6 +57,9 @@ export default {
 </script>
 
 <style>
+  #app{
+    overflow-x: hidden;
+  }
   .search-bar{
       height: 2.2rem;
       background-color: #1989fa;
