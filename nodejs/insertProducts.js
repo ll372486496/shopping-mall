@@ -2,11 +2,11 @@ const fs=require('fs');
 const pool = require('./pool.js');
 /* 向数据库插入产品 */
 
- /*  fs.readFile('data/goods.json','utf8',function(err, data){
+  /* fs.readFile('data/products.json','utf8',function(err, data){
     let newData= JSON.parse(data)
     let i=0
     let pushData=[]
-    newData.RECORDS.map(function(value,index){
+    newData.map(function(value,index){
         if(value.IMAGE1!=null){
           let pid=value.ID
           let pname=value. NAME
@@ -28,7 +28,7 @@ const pool = require('./pool.js');
     })
   }); */
 /* 向数据库插入子分类数据 */
-fs.readFile('data/category_sub.json','utf8',function(err,data){
+/* fs.readFile('data/category_sub.json','utf8',function(err,data){
   let newData= JSON.parse(data)
   let i=0
   let pushData=[]
@@ -39,5 +39,17 @@ fs.readFile('data/category_sub.json','utf8',function(err,data){
     let sql='INSERT INTO mall_categorysub VALUES (?,?,?)';
     pool.query(sql,[subid,cid,sname],function(err,res){})
   });
-})
+}) */
 /* 向数据库插入子分类数据 */
+fs.readFile('data/category.json','utf8',function(err,data){
+  let newData= JSON.parse(data)
+  let i=0
+  let pushData=[]
+  newData.RECORDS.map(function(value,index){
+    let cid=value.ID;
+    let cname=value.MALL_CATEGORY_NAME;
+    let pic=value.IMAGE;
+    let sql='INSERT INTO mall_category VALUES (?,?,?)';
+    pool.query(sql,[cid,cname,pic],function(err,res){})
+  })
+})

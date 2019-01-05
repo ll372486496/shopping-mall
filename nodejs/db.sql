@@ -43,3 +43,10 @@ CREATE TABLE mall_categorysub(
   sname VARCHAR(32),
   UNIQUE (subid)
 )
+/* 分类表 */
+CREATE TABLE mall_category(
+  pic VARCHAR(100),
+  cid VARCHAR(32),
+  cname VARCHAR(32),
+  UNIQUE (cid)
+)
