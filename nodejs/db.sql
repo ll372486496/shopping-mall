@@ -15,3 +15,31 @@ INSERT INTO mall_user VALUES
 (NULL, 'luoli','ll123456',NOW()),
 (NULL, 'liuguoqiang','lgq0421',NOW()),
 (NULL, 'liwei','586541',NOW());
+
+/* 产品表 */
+CREATE TABLE mall_products(
+  pid VARCHAR(32),
+  pname VARCHAR(32),
+  subid VARCHAR(32),
+  ori_price DECIMAL(10,2),
+  pre_price DECIMAL(10,2),
+  amount INT,
+  detail VARCHAR(3000),
+  sales INT,
+  image1 VARCHAR(50),
+  ctime VARCHAR(32),
+  utime VARCHAR(32),
+  pic VARCHAR(100),
+ 
+
+  UNIQUE (pid)
+  );
+
+
+/* 子分类表 */
+CREATE TABLE mall_categorysub(
+  subid VARCHAR(32),
+  cid VARCHAR(32),
+  sname VARCHAR(32),
+  UNIQUE (subid)
+)
