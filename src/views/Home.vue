@@ -50,7 +50,7 @@
         <van-list>
           <van-row gutter="20"><!-- gutter为列元素间距 -->
             <van-col span="12" v-for="( item, index) in hotGoods" :key="index">
-              <goodsInfo :goods='item'></goodsInfo>
+              <goodsInfo :goods='item' :goodsId="item.goodsId"></goodsInfo>
             </van-col>
           </van-row>
         </van-list>

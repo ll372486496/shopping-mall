@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-info">
+  <div class="goods-info" @click="goGoodsPage()">
     <div class="goods-img">
       <img :src="goods.image"  width="90%">
     </div>
@@ -13,7 +13,8 @@
 
 <script>
   export default {
-    props:['goods'],
+    props:['goods','goodsId'],
+    filter:{},
     data(){
       return{
         image:'',
@@ -21,6 +22,15 @@
         orginPrice:0,
         price:0
       }
+    },
+    methods:{
+      goGoodsPage(){
+       
+        this.$router.push({name:'Goods',query:{goodsId:this.goodsId}})
+      }
+    },
+    created(){
+       console.log(this.goodsId);
     },
     watch:{
       goods:function(val){

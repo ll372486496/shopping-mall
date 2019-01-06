@@ -6,6 +6,7 @@ import Profile from './components/pages/Profile'
 import CategoryList from './components/pages/CategoryList'
 import Register from '@/components/pages/Register'
 import Login from '@/components/pages/Login'
+import Goods from '@/components/pages/Goods'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/Login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/Goods',
+      name: 'Goods',
+      component: Goods
     }
 
   ]
