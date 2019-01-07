@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="home">
     <!-- 轮播图 -->
     <div class="swipe-banner">
         <van-swipe :autoplay='1500'>
@@ -50,7 +50,7 @@
         <van-list>
           <van-row gutter="20"><!-- gutter为列元素间距 -->
             <van-col span="12" v-for="( item, index) in hotGoods" :key="index">
-              <goodsInfo :goods='item' :goodsId="item.goodsId"></goodsInfo>
+              <goodsInfo :goods='item' :goodsId="item.pid"></goodsInfo>
             </van-col>
           </van-row>
         </van-list>
@@ -135,6 +135,10 @@ import { Toast } from 'vant'
 </script>
   
 <style scoped>
+  .home{
+    margin-top: 30px;
+    margin-bottom: 60px
+  }
   .swipe-banner{
     clear: both;
     width: 20rem;
