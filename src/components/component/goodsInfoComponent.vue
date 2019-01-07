@@ -1,9 +1,9 @@
 <template>
   <div class="goods-info" @click="goGoodsPage()">
     <div class="goods-img">
-      <img :src="goods.image"  width="90%">
+      <img :src="goods.pic"  width="90%">
     </div>
-    <div class="goods-name">{{goods.name}}</div>
+    <div class="goods-name">{{goods.pname}}</div>
     <div class="goods-price">
       原价：<del>{{goods.originPrice}}</del>
     </div>
@@ -30,7 +30,7 @@
       }
     },
     created(){
-       console.log(this.goodsId);
+       /* console.log(this.goodsId); */
     },
     watch:{
       goods:function(val){
@@ -39,7 +39,7 @@
         this.image=this.goods.image;
         this.orginPrice=this.goods.orginPrice;
         this.price=this.goods.price;
-        console.log( this.name,this.image,this.orginPrice,this.price);
+        /* console.log( this.name,this.image,this.orginPrice,this.price); */
       }
     }
   }
