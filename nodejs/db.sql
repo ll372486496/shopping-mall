@@ -26,7 +26,7 @@ CREATE TABLE mall_products(
   amount INT,
   detail VARCHAR(3000),
   sales INT,
-  image1 VARCHAR(50),
+  image1 VARCHAR(200),
   ctime VARCHAR(32),
   utime VARCHAR(32),
   pic VARCHAR(100),
@@ -49,4 +49,14 @@ CREATE TABLE mall_category(
   cid VARCHAR(32),
   cname VARCHAR(32),
   UNIQUE (cid)
+)
+
+/* 热卖商品表 */
+CREATE TABLE mall_hotGoods(
+ originPrice DECIMAL(10,2),
+ pic VARCHAR(100),
+ pid VARCHAR(32),
+ price DECIMAL(10,2),
+ pname VARCHAR(32),
+ UNIQUE(pid)
 )

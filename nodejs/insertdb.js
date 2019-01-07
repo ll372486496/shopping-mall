@@ -2,7 +2,7 @@ const fs=require('fs');
 const pool = require('./pool.js');
 /* 向数据库插入产品 */
 
-  /* fs.readFile('data/products.json','utf8',function(err, data){
+  fs.readFile('data/products.json','utf8',function(err, data){
     let newData= JSON.parse(data)
     let i=0
     let pushData=[]
@@ -26,7 +26,7 @@ const pool = require('./pool.js');
         }  
        
     })
-  }); */
+  });
 /* 向数据库插入子分类数据 */
 /* fs.readFile('data/category_sub.json','utf8',function(err,data){
   let newData= JSON.parse(data)
@@ -41,7 +41,7 @@ const pool = require('./pool.js');
   });
 }) */
 /* 向数据库插入子分类数据 */
-fs.readFile('data/category.json','utf8',function(err,data){
+/* fs.readFile('data/category.json','utf8',function(err,data){
   let newData= JSON.parse(data)
   let i=0
   let pushData=[]
@@ -52,4 +52,20 @@ fs.readFile('data/category.json','utf8',function(err,data){
     let sql='INSERT INTO mall_category VALUES (?,?,?)';
     pool.query(sql,[cid,cname,pic],function(err,res){})
   })
-})
+}) */
+
+/*  向数据库插入热卖商品数据 */
+/* fs.readFile('data/data.json','utf8',function(err,data){
+  let newData= JSON.parse(data).data.hotGoods;
+  let i=0
+  
+  newData.map(function(value,index){
+    let originPrice=value. mallPrice;
+    let pid=value. goodsId;
+    let pic=value.image;
+    let price=value.price;
+    let pname=value.name;
+    let sql='INSERT INTO mall_hotgoods VALUES (?,?,?,?,?)';
+    pool.query(sql,[originPrice,pic,pid,price,pname],(err,res)=>{});
+  })
+}) */
