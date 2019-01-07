@@ -64,6 +64,10 @@ export default {
       height: 2.2rem;
       background-color: #1989fa;
       line-height:2.2rem;
+      position:fixed;
+      top:0;
+      left: 0;
+      z-index: 999;
   }
   .search-input{
       width:100%;
