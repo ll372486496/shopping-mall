@@ -62,10 +62,7 @@
 </script>
 
 <style scoped>
-  .goods{
-    margin-top: 30px;
-    margin-bottom: 55px
-  }
+  
   .detail{
     font-size: 0px;
   }

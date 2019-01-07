@@ -59,6 +59,8 @@ export default {
 <style>
   #app{
     overflow-x: hidden;
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
   .search-bar{
       height: 2.2rem;

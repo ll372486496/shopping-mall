@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     分类页
   </div>
 </template>
@@ -11,5 +11,5 @@
 </script>
 
 <style scoped>
-
+  
 </style>

@@ -135,10 +135,7 @@ import { Toast } from 'vant'
 </script>
   
 <style scoped>
-  .home{
-    margin-top: 30px;
-    margin-bottom: 60px
-  }
+  
   .swipe-banner{
     clear: both;
     width: 20rem;
