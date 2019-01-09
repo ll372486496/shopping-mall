@@ -241,9 +241,24 @@ app.get('/clist',(req,res)=>{
   })
 });
 app.get('/sublist',(req,res)=>{
-  
-  var sql='SELECT * FROM mall_categorysub';
-  pool.query(sql,(err,result)=>{
+  var cid=req.query.cid;
+  var sql='SELECT * FROM mall_categorysub WHERE cid=?';
+  pool.query(sql,[cid],(err,result)=>{
+    if(err){
+      throw err;
+      res.send({code:-1,msg:'服务器故障'});
+    }
+    if(result.length>0){
+      res.send(result);
+    }else{
+      res.send({code:-1,msg:'服务器故障'});
+    }
+  })
+});
+app.get('/goodsBySubId',(req,res)=>{
+  var sql='SELECT * FROM mall_products WHERE subid = ? ';
+  var subid=req.query.subid;
+  pool.query(sql,[subid],(err,result)=>{
     if(err){
       throw err;
       res.send({code:-1,msg:'服务器故障'});

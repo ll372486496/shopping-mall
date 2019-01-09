@@ -34,7 +34,7 @@
     },
     watch:{
       goods:function(val){
-        console.log(1+this.goods);
+        
         this.name=this.goods.name;
         this.image=this.goods.image;
         this.orginPrice=this.goods.orginPrice;
