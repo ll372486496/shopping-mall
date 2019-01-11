@@ -227,7 +227,7 @@ app.get('/hots',(req,res)=>{
 });
 app.get('/clist',(req,res)=>{
   
-  var sql='SELECT * FROM mall_category';
+  var sql='SELECT * FROM mall_category ORDER BY cid';
   pool.query(sql,(err,result)=>{
     if(err){
       throw err;
@@ -256,15 +256,39 @@ app.get('/sublist',(req,res)=>{
   })
 });
 app.get('/goodsBySubId',(req,res)=>{
-  var sql='SELECT * FROM mall_products WHERE subid = ? ';
+  
   var subid=req.query.subid;
+  var pageNum=Number(req.query.pageNum?req.query.pageNum:1) ;
+  var pageSize=Number(req.query.pageSize?req.query.pageSize:10);
+  var start=(pageNum-1)*pageSize;
+
+
+  var progress=0;
+  var obj={code:1};
+  //查询总记录数，并计算总页数
+  var sql='SELECT COUNT(pid) AS c FROM mall_products WHERE subid = ? ';
   pool.query(sql,[subid],(err,result)=>{
+    if(err) throw err;
+    var pageCount = Math.ceil(result[0].c/pageSize);
+    progress+=50;
+    obj.pageCount=pageCount;
+    if(progress==100){
+      res.send(obj);
+    }
+  })
+
+  //根据提交参数，查询当前页
+  var sql='SELECT * FROM mall_products WHERE subid = ? LIMIT ?,?';
+  pool.query(sql,[subid,start,pageSize],(err,result)=>{
     if(err){
       throw err;
       res.send({code:-1,msg:'服务器故障'});
     }
     if(result.length>0){
-      res.send(result);
+      obj.data=result
+      progress+=50;
+      if(progress==100)
+      res.send(obj);
     }else{
       res.send({code:-1,msg:'服务器故障'});
     }
