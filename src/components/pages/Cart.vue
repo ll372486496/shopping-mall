@@ -6,12 +6,13 @@
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
       <van-checkbox
         class="card-goods__item"
-        v-for="item in cartList"
-        v-model="item.isSelected"
+        v-for="(item) in cartList"
+       
         :key="item.pid"
         :name="item.pid"
         
       >
+     
         <van-card
           :title="item.pname"
          
@@ -27,7 +28,7 @@
      :button-text="submitBarText"
      :disabled="!checkedGoods.length"
     >
-      <van-checkbox v-model="allChecked">全选</van-checkbox>
+      <van-checkbox v-model="allChecked" @change='handlechange'>全选</van-checkbox>
       
     </van-submit-bar>
 
@@ -38,7 +39,7 @@
   export default {
     created(){
       this.getCartItem()
-      console.log(this.checkedGoods);
+      
     },
     data(){
       return{
@@ -47,6 +48,7 @@
         uid:1,
         checkedGoods:[],
         allChecked:false,
+       
       }
     },
     methods:{
@@ -59,16 +61,30 @@
             this.isEmpty=false;
             console.log(res.data.data);
             this.cartList=res.data.data;
-            for(var item of this.cartList){
-              item.isSelected=true;
-             
+            for( var item of this.cartList){
+              item.selected=true;
+              this.checkedGoods.push(item.pid);
             }
-            console.log(this.cartList);
+            console.log( this.checkedGoods);
           }
+          
           
         })
       },
-     
+      handlechange(val){
+       if(val){
+         this.checkedGoods=[];
+        for( var item of this.cartList){
+          item.selected=true;
+          this.checkedGoods.push(item.pid);
+        }
+       }else{
+         if(this.checkedGoods.length==this.cartList.length){
+           this.checkedGoods=[];
+         }
+         
+       }
+      }
      
     },
     computed:{
@@ -90,6 +106,18 @@
       submitBarText(){
         return `结算(${this.checkedGoods.length})`
       }
+    },
+    watch:{
+      checkedGoods(){
+        
+        if(this.checkedGoods.length==this.cartList.length){
+          this.allChecked=true;
+        }else{
+          this.allChecked=false;
+        }
+      },
+     
+      
     }
   }
 </script>
