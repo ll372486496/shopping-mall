@@ -41,7 +41,7 @@ const pool = require('./pool.js');
   });
 }) */
 /* 向数据库插入子分类数据 */
-fs.readFile('data/category.json','utf8',function(err,data){
+/* fs.readFile('data/category.json','utf8',function(err,data){
   let newData= JSON.parse(data)
   let i=0
   let pushData=[]
@@ -52,7 +52,7 @@ fs.readFile('data/category.json','utf8',function(err,data){
     let sql='INSERT INTO mall_category VALUES (?,?,?)';
     pool.query(sql,[pic,cid,cname],function(err,res){})
   })
-})
+}) */
 
 /*  向数据库插入热卖商品数据 */
 /* fs.readFile('data/data.json','utf8',function(err,data){
@@ -69,3 +69,15 @@ fs.readFile('data/category.json','utf8',function(err,data){
     pool.query(sql,[originPrice,pic,pid,price,pname],(err,res)=>{});
   })
 }) */
+
+/* 向数据库插入购物车商品数据 */
+fs.readFile('data/products.json','utf8',function(err, data){
+  let newData= JSON.parse(data);
+  let length=newData.length;
+  let sql='INSERT INTO mall_cartitem VALUES (null,?,?,?)';
+  for(var i=1;i<5;i++){
+    for(var j=0;j<Math.ceil(Math.random()*10);j++){
+      pool.query(sql,[newData[Math.ceil(Math.random()*length)].ID,i,Math.ceil(Math.random()*10)],(err,res)=>{});
+    }
+  }
+})

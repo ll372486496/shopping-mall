@@ -294,3 +294,17 @@ app.get('/goodsBySubId',(req,res)=>{
     }
   })
 });
+app.get('/cartItem',(req,res)=>{
+  var uid=req.query.uid;
+  var sql='SELECT mall_cartitem.*,mall_products.* FROM mall_cartitem INNER JOIN mall_products ON mall_cartitem.pid=mall_products.pid WHERE mall_cartitem.uid=? AND mall_cartItem.isdel= 0 '
+  pool.query(sql,[uid],(err,result)=>{
+    if(err) throw err;
+    if(result.length>0){
+      console.log(1);
+      res.send({code:1,data:result})
+    }else{
+      console.log(-1);
+      res.send({code:-1,msg:'为空'})
+    }
+  })
+});

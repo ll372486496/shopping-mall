@@ -60,3 +60,12 @@ CREATE TABLE mall_hotGoods(
  pname VARCHAR(32),
  UNIQUE(pid)
 )
+/* 购物车商品表 */
+CREATE TABLE mall_cartItem(
+  ciid INT PRIMARY KEY AUTO_INCREMENT,
+  pid VARCHAR(32),
+  uid INT,
+  count INT,
+  isdel INT,
+  UNIQUE(ciid)
+)
