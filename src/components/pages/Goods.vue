@@ -16,7 +16,7 @@
         {{product.pname}}
       </div>
       <div class="price">原价：<del>{{product.originPrice | money}}</del>现价：{{product.price |  money}}</div>
-      <van-tabs swipeable sticky>
+      <van-tabs swipeable sticky color='#1989fa'>
         <van-tab title="商品详情">
           <div class="detail" v-html="product.detail"></div>
         </van-tab>

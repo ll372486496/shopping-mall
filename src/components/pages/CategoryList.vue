@@ -18,7 +18,7 @@
 
       <van-col span="18">
         <div class="tabCategorySub">
-          <van-tabs @click="clickSub" v-model="active">
+          <van-tabs @click="clickSub" v-model="active" color='#1989fa'>
             <van-tab v-for="(item, index) in subList" :key="index" :title="item.sname">
               <div id="list-div">
                 <van-list>
