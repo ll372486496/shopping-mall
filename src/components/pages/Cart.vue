@@ -1,7 +1,13 @@
 <template>
   <div>
     <div>
-     <van-nav-bar   title="购物车" /> 
+    <van-nav-bar
+      title="购物车"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    > 
+    </van-nav-bar>
     </div>
     <van-checkbox-group class="card-goods" v-model="checkedGoods">
       <van-checkbox
@@ -70,6 +76,9 @@
           
           
         })
+      },
+      onClickLeft(){
+        this.$router.go(-1);
       },
       handlechange(val){
        if(val){

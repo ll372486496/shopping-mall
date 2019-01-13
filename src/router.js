@@ -7,6 +7,8 @@ import CategoryList from './components/pages/CategoryList'
 import Register from '@/components/pages/Register'
 import Login from '@/components/pages/Login'
 import Goods from '@/components/pages/Goods'
+import Address from '@/components/pages/Address'
+import Coupon from '@/components/pages/Coupon'
 
 Vue.use(Router)
 
@@ -30,7 +32,23 @@ export default new Router({
     {
       path: '/Profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      children:[
+        {
+          path:"",
+          component:Profile
+        },
+        {
+            path:'/Profile/Address',
+            component:Address,
+            name:'Address'
+        },
+        {
+            path:'/Profile/Coupon',
+            component:Coupon,
+            name:'Coupon'
+        }
+      ]
     },
     {
       path: '/CategoryList',
