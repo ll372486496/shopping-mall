@@ -9,6 +9,7 @@ import Login from '@/components/pages/Login'
 import Goods from '@/components/pages/Goods'
 import Address from '@/components/pages/Address'
 import Coupon from '@/components/pages/Coupon'
+import AddAddress from '@/components/pages/AddAddress'
 
 Vue.use(Router)
 
@@ -30,25 +31,25 @@ export default new Router({
       component: Cart
     },
     {
+      path:'/Address',
+      component:Address,
+      name:'Address'
+   },
+   {
+    path:'/Coupon',
+    component:Coupon,
+    name:'Coupon'
+   },
+    {
       path: '/Profile',
       name: 'Profile',
       component: Profile,
-      children:[
-        {
-          path:"",
-          component:Profile
-        },
-        {
-            path:'/Profile/Address',
-            component:Address,
-            name:'Address'
-        },
-        {
-            path:'/Profile/Coupon',
-            component:Coupon,
-            name:'Coupon'
-        }
-      ]
+      
+    },
+    {
+      path:'/AddAddress',
+      name:'AddAddress',
+      component:AddAddress
     },
     {
       path: '/CategoryList',
