@@ -10,7 +10,7 @@ import Goods from '@/components/pages/Goods'
 import Address from '@/components/pages/Address'
 import Coupon from '@/components/pages/Coupon'
 import AddAddress from '@/components/pages/AddAddress'
-
+import ProfileIndex from '@/components/pages/ProfileIndex'
 Vue.use(Router)
 
 export default new Router({
@@ -30,7 +30,7 @@ export default new Router({
       name: 'Cart',
       component: Cart
     },
-    {
+   /*  {
       path:'/Address',
       component:Address,
       name:'Address'
@@ -39,18 +39,37 @@ export default new Router({
     path:'/Coupon',
     component:Coupon,
     name:'Coupon'
-   },
+   }, */
     {
       path: '/Profile',
       name: 'Profile',
-      component: Profile,
+      component:ProfileIndex,
+      children:[
+        {
+          path:'',
+          component:Profile,
+          name:'Profile'
+        },
+        {
+          path:'Coupon',
+          component:Coupon,
+          name:'Coupon'
+        },
+        {
+          path:'Address',
+          component:Address,
+          name:'Address'
+        },
+        {
+          path:'AddAddress',
+          name:'AddAddress',
+          component:AddAddress
+        },
+       
+      ]
       
     },
-    {
-      path:'/AddAddress',
-      name:'AddAddress',
-      component:AddAddress
-    },
+   
     {
       path: '/CategoryList',
       name: 'CategoryList',

@@ -7,8 +7,8 @@
       @click-left="onClickLeft"
     >
     </van-nav-bar>
-    <van-cell title="收货地址" value='管理我的收货址' is-link to="/Address" />
-    <van-cell title="优惠卷" value='管理我的优惠卷' is-link to="/Coupon" />
+    <van-cell title="收货地址" value='管理我的收货址' is-link to="/Profile/Address" />
+    <van-cell title="优惠卷" value='管理我的优惠卷' is-link to="/Profile/Coupon" />
     <van-cell title="投诉建议" value='联系客服' is-link to="/" />
   </div>
   
