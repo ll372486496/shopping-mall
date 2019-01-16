@@ -13,42 +13,39 @@
   show-postal
   show-delete
   show-set-default
-  show-search-result
-  :search-result="searchResult"
+ 
+  
   @save="onSave"
   @delete="onDelete"
-  @change-detail="onChangeDetail"
+  
 />
   </div>
 </template>
 
 <script>
   import AreaList from './area';
+  import qs from 'qs';
   export default {
   data() {
     return {
+      uid:1,
       areaList:AreaList,
       searchResult: []
     }
   },
 
   methods: {
-    onSave() {
-      Toast('save');
+    onSave(content) {
+      var url='http://127.0.0.1:3000/user/addAddress';
+      content.uid=this.uid;
+      this.axios.post(url,qs.stringify(content)).then(res=>{
+        console.log(res)
+      });
     },
     onDelete() {
       Toast('delete');
     },
-    onChangeDetail(val) {
-      if (val) {
-        this.searchResult = [{
-          name: '黄龙万科中心',
-          address: '杭州市西湖区'
-        }];
-      } else {
-        this.searchResult = [];
-      }
-    },
+    
     onClickLeft(){
       this.$router.go(-1);
     }
