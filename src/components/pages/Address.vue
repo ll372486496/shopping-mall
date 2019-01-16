@@ -23,28 +23,26 @@
   export default {
     data() {
     return {
-      chosenAddressId: '1',
-      list: [
-        {
-          id: '1',
-          name: '张三',
-          tel: '13000000000',
-          address: '湖南省长沙市雨花区侯家塘佳天国际28楼'
-        },
-        {
-          id: '2',
-          name: '李四',
-          tel: '1310000000',
-          address: '湖南省长沙市雨花区东塘中机国际11楼'
-        }
-      ],
-      
+      chosenAddressId: '',
+      list: [],
+      uid:2,
     }
-  },
-
+  }, 
+    created() {
+      var url='http://127.0.0.1:3000/user/getaddress?uid='+this.uid;
+      this.axios.get(url).then(res=>{
+        this.list=res.data;
+        console.log(this.list)
+        for(var item of this.list){
+          if(item.isselected){
+            this.chosenAddressId=item.id;
+          }
+        }
+      })
+    },
   methods: {
     onAdd() {
-      this.$router.push('/AddAddress')
+      this.$router.push('/Profile/AddAddress')
     },
     onSelect(item, index){
       console.log(item)
