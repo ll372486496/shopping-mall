@@ -4,7 +4,7 @@ const pool = require("./pool");
 const bodyParser=require('body-parser'); // bodyParser模块
 const userRouter=require('./routes/user.js'); // 服务器用户路由
 const productRouter=require('./routes/product.js');// 服务器产品路由
-
+const session=require('express-session');//express-session模块
 //2:创建express对象
 var app = express();
 //2.1:加载跨域访问组件
@@ -13,6 +13,15 @@ app.use(cors({
   origin:["http://127.0.0.1:8080",
   "http://localhost:8080"],
   credentials:true
+}));
+//2.2加载express-session组件并配置
+app.use(session({
+  secret:"128位随机字符",   
+  resave:false,             
+  saveUninitialized:true,   
+  cookie:{
+    maxAge:1000 * 60 * 60 * 24 
+  }
 }));
 //3:指定监听端口3000
 app.listen(3000);
