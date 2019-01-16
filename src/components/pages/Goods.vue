@@ -23,8 +23,13 @@
         <van-tab title="商品评价">暂无评价</van-tab>
       </van-tabs>
       <div class="bottom">
-        <van-button size="large" type='primary'>放入购物车</van-button>
+        <van-button size="large" type='primary' @click="showpop">放入购物车</van-button>
         <van-button size="large" type='danger'>直接购买</van-button>
+        <van-popup v-model="show" position="bottom">
+
+          <van-stepper v-model="count" :disable-input=' isinput' size='large'/>
+          <van-button @click="addcart" size='large' type="primary">确定</van-button>
+        </van-popup>
       </div>
     </div>
   </div>
@@ -32,11 +37,16 @@
 
 <script>
   import{Money} from '../../filter/money.js'
+  import { Toast } from 'vant'
   export default {
     data(){
       return{
          goodsId: '775e575ce28a4f89b1dfe2c99eb08ae7',
          product:{},
+         show:false,     
+         count:1,   
+         isinput:true, 
+         uid:1,
       }
     },
     created(){
@@ -56,6 +66,22 @@
       },      
       onClickLeft(){
         this.$router.go(-1);
+      },
+      showpop(){
+        this.show=true;
+      },
+      addcart(){
+       var url='http://127.0.0.1:3000/user/addcart?';
+       var params=`pid=${this.goodsId}&uid=${this.uid}&count=${this.count}`;
+       this.axios.get(url+params).then(res=>{
+         if(res.data.code==1){
+           Toast.success('添加成功')
+           this.show=false;
+         }else{
+           Toast.fail('此商品已存在')
+           this.show=false;
+         }
+       })
       }
     }
   }
@@ -77,4 +103,8 @@
     flex-direction: row;
     flex-flow: nowrap;
   }
+  .van-popup{
+    height: 100px;
+  }
+  
 </style>
