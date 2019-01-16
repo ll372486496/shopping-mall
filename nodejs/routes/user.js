@@ -32,13 +32,53 @@ router.post('/login',function(req,res){
   /* console.log(result); */
   if(err)throw err;
   if(result.length>0){
-   
+    req.session.username=username;
+    req.session.uid=uid;
     res.send({code:1,msg:'登录成功'});
   }else{
     res.send({code:-2,msg:'账号或密码错误'});
   }
 });
 })
-
+router.post('/addAddress',function(req,res){
+ /*  console.log(Boolean(req.body.isDefault=='true')); */
+  var content=req.body;
+  var name=content.name,tel=content.tel,address=content.province+content.city+content.county+content.addressDetail,uid=content.uid;
+  var isDefault=(req.body.isDefault=='true')?1:0; 
+  var sql='INSERT INTO mall_address VALUES (NULL,?,?,?,?,?)';
+  pool.query(sql,[uid,name,tel,address,isDefault],(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows>0){
+      res.send({code:'1'});
+    }
+  })
+ 
+});
+router.get('/getaddress',function(req,res){
+  var uid=req.query.uid;
+  sql='SELECT * FROM mall_address WHERE uid = ? ';
+  pool.query(sql,[uid],(err,result)=>{
+   if(err) throw err
+   res.send(result);
+  })
+});
+router.get('/addcart',function(req,res){
+ 
+  var uid=req.query.uid,pid=req.query.pid,count=req.query.count;
+  sql='SELECT * FROM mall_cartitem WHERE pid = ? AND uid = ?';
+  pool.query(sql,[pid,uid],(err,result)=>{
+    if(result.length>0){
+     
+      res.send({code:-1})
+    }else{
+     
+      sql='INSERT INTO mall_cartitem VALUES (NULL,?,?,?,0)';
+      pool.query(sql,[pid,uid,count],(err,result)=>{
+        if(err) throw err;
+        res.send({code:1,data:result})
+      })
+    }
+  })
+})
 
 module.exports = router;
