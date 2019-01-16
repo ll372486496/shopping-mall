@@ -8,6 +8,8 @@ import 'vant/lib/index.css'
 Vue.use(Vant)
 /* 引入axios库 */
 import axios from "axios"
+/* 让axios默认记住sessionid每次发送请求时都会带上sessionid */
+axios.defaults.withCredentials=true
 /* 将axios注册到Vue */
 Vue.prototype.axios=axios
 Vue.config.productionTip = false
