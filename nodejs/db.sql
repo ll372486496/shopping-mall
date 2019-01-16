@@ -69,3 +69,26 @@ CREATE TABLE mall_cartItem(
   isdel INT,
   UNIQUE(ciid)
 )
+
+/* 收货地址表 */
+CREATE TABLE mall_address(
+  aid INT PRIMARY KEY AUTO_INCREMENT,
+  uid INT,
+  name VARCHAR(32),
+  tel VARCHAR(32),
+  address VARCHAR(200),
+  isselected INT,
+  UNIQUE(aid)
+)
+
+/* 订单项表 */
+CREATE TABLE mall_order(
+  oid INT PRIMARY KEY AUTO_INCREMENT,
+  uid INT,
+  pid VARCHAR(32),
+  count INT,
+ 
+  aid INT,
+  status INT,
+  UNIQUE(aid)
+)
