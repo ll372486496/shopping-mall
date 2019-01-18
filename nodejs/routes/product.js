@@ -14,6 +14,18 @@ router.post('/details',function(req,res){
     }
   });
 });
+router.get('/search',function(req,res){
+  var keyword=`%${req.query.keyword}%`;
+  var sql='SELECT * FROM mall_products WHERE pname like ?  ';
+  pool.query(sql,[keyword],(err,result)=>{
+    if(err) throw err;
+    if(result.length<1){ 
+      res.send({code:-1,msg:'没有产品'})
+    }else{
+      res.send({code:1,data:result})
+    }
+  })
+})
 
 
 module.exports = router;
