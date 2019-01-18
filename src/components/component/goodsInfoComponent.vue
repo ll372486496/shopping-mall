@@ -1,7 +1,7 @@
 <template>
   <div class="goods-info" @click="goGoodsPage()">
     <div class="goods-img">
-      <img :src="goods.pic"  width="90%">
+      <img :src="goods.pic"  width="90%" :onerror='errrorImg'>
     </div>
     <div class="goods-name">{{goods.pname}}</div>
     <div class="goods-price">
@@ -20,6 +20,7 @@
         image:'',
         name:'',
         orginPrice:0,
+        errrorImg:'this.src="' + require('@/assets/images/errorimg.png') + '"' , 
         price:0
       }
     },
