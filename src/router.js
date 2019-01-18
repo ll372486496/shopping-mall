@@ -11,6 +11,7 @@ import Address from '@/components/pages/Address'
 import Coupon from '@/components/pages/Coupon'
 import AddAddress from '@/components/pages/AddAddress'
 import ProfileIndex from '@/components/pages/ProfileIndex'
+import Search from '@/components/pages/search'
 Vue.use(Router)
 
 export default new Router({
@@ -89,6 +90,11 @@ export default new Router({
       path: '/Goods',
       name: 'Goods',
       component: Goods
+    },
+    {
+      path:'/Search/:keyword',
+      name:'Search',
+      component:Search
     }
 
   ]
