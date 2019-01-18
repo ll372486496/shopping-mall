@@ -7,10 +7,10 @@
             <img :src='icon' class="icon" width="80%"/>
           </van-col>
           <van-col span="16">
-            <input type="text" class="search-input">
+            <input type="text" class="search-input"  @keyup.13="gosearch($event)" v-model="input">
           </van-col>
           <van-col span="5">
-            <van-button size="mini">
+            <van-button size="mini" @click="search()">
               查找
             </van-button> 
           </van-col>
@@ -31,7 +31,10 @@ export default {
   data() {
     return {
       icon: require('../src/assets/images/money.png'),
-      active: 0
+      active: 0,
+      keyword:'',
+      input:'',
+      nowPath:'',
     }
   },
   methods: {
@@ -51,8 +54,42 @@ export default {
                         this.$router.push({name:'Profile'})
                         break;
                 }
-            }
+            },
+    changeActive(){
+      this.nowPath=this.$route.path;
+      switch(this.nowPath){
+        case '/':
+        this.active=0
+        break;
+        case '/CategoryList':
+        this.active=1
+        break;
+        case '/Cart':
+        this.active=2
+        break; 
+        case '/Profile/':
+        this.active=3
+        break;
+      }
+    },
+    search(){
+      this.$router.push('/Search/'+this.input.trim());
+    },
+    gosearch(){
+    if(this.input.trim()){
+     this.search();
+    };
   },
+
+  },
+  created(){
+   this.changeActive()
+  },
+  updated(){
+    this.changeActive()
+  }
+  
+ 
 }
 </script>
 
