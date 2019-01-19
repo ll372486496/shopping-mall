@@ -74,6 +74,10 @@ export default {
     },
     search(){
       this.$router.push('/Search/'+this.input.trim());
+      console.log(this.nowPath.substring(0,7));
+      if(this.nowPath.substring(0,7)=='/Search'){
+       this.$router.go(0);
+      }
     },
     gosearch(){
     if(this.input.trim()){
