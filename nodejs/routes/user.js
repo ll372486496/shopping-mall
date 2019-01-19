@@ -29,17 +29,27 @@ router.post('/login',function(req,res){
  var password = req.body.password;
  var sql='SELECT * FROM mall_user WHERE uname=? AND upwd=?';
  pool.query(sql,[username,password],(err,result)=>{
-  /* console.log(result); */
-  if(err)throw err;
-  if(result.length>0){
-    req.session.username=username;
-    req.session.uid=uid;
-    res.send({code:1,msg:'登录成功'});
+    
+    if(err)throw err;
+    if(result.length>0){
+      req.session.username=username;
+      req.session.uid=result[0].uid;
+      console.log(req.session);
+      res.send({code:1,uid:result[0].uid});
+    }else{
+      res.send({code:-2,msg:'账号或密码错误'});
+    }
+  });
+
+});
+router.get('/isLogin',function(req,res){
+  console.log(Boolean(req.session.uid));
+  if(req.session.uid){
+    res.send({code:1})
   }else{
-    res.send({code:-2,msg:'账号或密码错误'});
+    res.send({code:0})
   }
 });
-})
 router.post('/addAddress',function(req,res){
  /*  console.log(Boolean(req.body.isDefault=='true')); */
   var content=req.body;

@@ -30,8 +30,9 @@ import { Toast } from 'vant'
       }
     },
      created(){
-      if(localStorage.userInfo){
-        console.log(typeof(localStorage.userInfo));
+    
+      if(this.$store.getters.login){
+       
         Toast.success('您已经登录')
         this.$router.push('/')
       }
@@ -52,7 +53,8 @@ import { Toast } from 'vant'
           this.axios.post(url,params).then(res=>{
             if(res.data.code==1){
               this.isLoading=false;
-              localStorage.userInfo= {userName:this.username};
+              this.$store.commit('setLogin');
+              this.$store.commit('setUid',res.data.uid);
               Toast.success('登录成功');
               this.$router.push('/');
               }else{

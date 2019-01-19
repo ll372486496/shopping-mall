@@ -44,7 +44,14 @@
 <script>
   export default {
     created(){
-      this.getCartItem()
+      if(this.$store.getters.login){
+        this.uid=this.$store.getters.userid;
+        console.log(this.uid);
+        this.getCartItem()
+      }else{
+         this.$router.push('/login')
+      }
+     
       
     },
     data(){
